@@ -9,7 +9,8 @@
     "measure": "node --experimental-strip-types src/measureMemory.ts",
     "measure:visible": "node --experimental-strip-types src/measureMemory.ts --no-headless",
     "type-check": "tsc",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build": "node scripts/build.js"
   },
   "dependencies": {
     "chrome-remote-interface": "^0.33.2",
