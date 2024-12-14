@@ -2,7 +2,7 @@ import { babel } from '@rollup/plugin-babel'
 import pluginTypeScript from '@babel/preset-typescript'
 
 export default {
-  input: 'src/measureMemory.ts',
+  input: 'src/main.ts',
   preserveEntrySignatures: 'strict',
   treeshake: {
     propertyReadSideEffects: false,

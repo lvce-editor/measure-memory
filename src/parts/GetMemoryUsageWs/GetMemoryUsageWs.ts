@@ -1,7 +1,9 @@
 import CDP from 'chrome-remote-interface'
-import type { MemoryUsage } from './types.ts'
+import type { MemoryUsage } from '../MemoryUsage/MemoryUsage.ts'
 
-export const getMemoryUsageWs = async (debuggingPort: string): Promise<MemoryUsage> => {
+export const getMemoryUsageWs = async (
+  debuggingPort: string,
+): Promise<MemoryUsage> => {
   const client = await CDP({
     host: 'localhost',
     port: Number(debuggingPort),

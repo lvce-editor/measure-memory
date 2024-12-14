@@ -20,7 +20,7 @@ export default tseslint.config(
       '**/coverage/**',
       '**/server/**',
       '**/e2e/**',
-      'src/*.ts',
+      'src/**/*.ts',
       'scripts',
       'src/index.d.ts',
       'rollup.config.js',
