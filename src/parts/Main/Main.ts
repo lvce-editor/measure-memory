@@ -11,5 +11,6 @@ export const main = async () => {
     workerPath: 'TODO',
     playwrightPath: 'TODO',
     root,
+    threshold: 400_000,
   })
 }
