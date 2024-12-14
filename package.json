@@ -1,0 +1,63 @@
+{
+  "name": "@lvce-editor/measure-memory",
+  "version": "0.0.0-dev",
+  "type": "module",
+  "scripts": {
+    "test": "node --unhandled-rejections=warn --experimental-vm-modules ./node_modules/jest/bin/jest.js --detectOpenHandles --forceExit",
+    "test:watch": "node --unhandled-rejections=warn --experimental-vm-modules ./node_modules/jest/bin/jest.js --watch",
+    "measure": "node --experimental-strip-types src/measureMemory.ts",
+    "measure:visible": "node --experimental-strip-types src/measureMemory.ts --no-headless",
+    "type-check": "tsc",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@types/chrome-remote-interface": "^0.31.14",
+    "@types/express": "^5.0.0",
+    "chrome-remote-interface": "^0.33.2",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.26.0",
+    "@eslint/js": "9.17.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@types/eslint__js": "^8.42.3",
+    "eslint": "9.17.0",
+    "execa": "^9.5.2",
+    "jest": "^29.7.0",
+    "prettier": "^3.4.2",
+    "rollup": "^4.28.1",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.0"
+  },
+  "jest": {
+    "injectGlobals": false,
+    "extensionsToTreatAsEsm": [
+      ".ts"
+    ],
+    "moduleNameMapper": {
+      "^(\\.{1,2}/.*)\\.js$": "$1"
+    },
+    "transform": {
+      "^.+\\.tsx?$": [
+        "ts-jest",
+        {
+          "useESM": true
+        }
+      ]
+    },
+    "collectCoverage": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  }
+}
