@@ -1,32 +1,40 @@
-import { threshold, workerPath } from '../Config/Config.ts'
+import { threshold } from '../Config/Config.ts'
 import { MemoryLimitExceededError } from '../Errors/Errors.ts'
 import { getMemoryUsageWs } from '../GetMemoryUsageWs/GetMemoryUsageWs.ts'
 import { launchBrowser } from '../LaunchBrowser/LaunchBrowser.ts'
-import { parseArgs } from '../ParseArgs/ParseArgs.ts'
-import { playwrightPath } from '../PlaywrightPath/PlaywrightPath.ts'
-import { root } from '../Root/Root.ts'
 import { startServer } from '../Server/Server.ts'
 import { waitForWorkerReady } from '../WaitForWorkerReady/WaitForWorkerReady.ts'
 
-export const measureMemory = async () => {
+export const measureMemory = async ({
+  workerPath,
+  port,
+  headless,
+  remoteDebuggingPort,
+  root,
+  playwrightPath,
+}: {
+  workerPath: string
+  port: number
+  headless: boolean
+  remoteDebuggingPort: string
+  root: string
+  playwrightPath: string
+}) => {
   if (process.platform === 'win32') {
     // not supported
     return
   }
-  const options = parseArgs()
 
-  const server = await startServer(options.port, workerPath, root)
-
-  const remoteDebuggingPort = '9222'
+  const server = await startServer(port, workerPath, root)
 
   const { page, browser } = await launchBrowser(
-    options.headless,
+    headless,
     remoteDebuggingPort,
     playwrightPath,
   )
 
   try {
-    await page.goto(`http://localhost:${options.port}`)
+    await page.goto(`http://localhost:${port}`)
     await waitForWorkerReady(page)
 
     const memoryUsage = await getMemoryUsageWs(remoteDebuggingPort)
