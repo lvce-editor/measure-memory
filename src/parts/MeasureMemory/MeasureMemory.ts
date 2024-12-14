@@ -1,4 +1,3 @@
-import { threshold } from '../Config/Config.ts'
 import { MemoryLimitExceededError } from '../Errors/Errors.ts'
 import { getMemoryUsageWs } from '../GetMemoryUsageWs/GetMemoryUsageWs.ts'
 import { launchBrowser } from '../LaunchBrowser/LaunchBrowser.ts'
@@ -12,6 +11,7 @@ export const measureMemory = async ({
   remoteDebuggingPort,
   root,
   playwrightPath,
+  threshold,
 }: {
   workerPath: string
   port: number
@@ -19,6 +19,7 @@ export const measureMemory = async ({
   remoteDebuggingPort: string
   root: string
   playwrightPath: string
+  threshold: number
 }) => {
   if (process.platform === 'win32') {
     // not supported
