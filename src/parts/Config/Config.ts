@@ -1,5 +1,5 @@
 import { join } from 'node:path'
-import { root } from './root.ts'
+import { root } from '../Root/Root.ts'
 
 export const threshold = 400_000
 

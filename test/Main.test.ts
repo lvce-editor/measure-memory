@@ -1,5 +1,6 @@
 import { expect, test } from '@jest/globals'
+import * as Main from '../src/parts/Main/Main.ts'
 
 test('main', () => {
-  expect(1 + 1).toBe(2)
+  expect(typeof Main.main).toBe('function')
 })
