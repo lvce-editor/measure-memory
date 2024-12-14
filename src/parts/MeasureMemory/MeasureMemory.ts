@@ -3,6 +3,8 @@ import { MemoryLimitExceededError } from '../Errors/Errors.ts'
 import { getMemoryUsageWs } from '../GetMemoryUsageWs/GetMemoryUsageWs.ts'
 import { launchBrowser } from '../LaunchBrowser/LaunchBrowser.ts'
 import { parseArgs } from '../ParseArgs/ParseArgs.ts'
+import { playwrightPath } from '../PlaywrightPath/PlaywrightPath.ts'
+import { root } from '../Root/Root.ts'
 import { startServer } from '../Server/Server.ts'
 import { waitForWorkerReady } from '../WaitForWorkerReady/WaitForWorkerReady.ts'
 
@@ -13,13 +15,14 @@ export const measureMemory = async () => {
   }
   const options = parseArgs()
 
-  const server = await startServer(options.port, workerPath)
+  const server = await startServer(options.port, workerPath, root)
 
   const remoteDebuggingPort = '9222'
 
   const { page, browser } = await launchBrowser(
     options.headless,
     remoteDebuggingPort,
+    playwrightPath,
   )
 
   try {
