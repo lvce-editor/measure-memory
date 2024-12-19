@@ -22,7 +22,7 @@ const getGitTagFromGit = async () => {
     ['describe', '--exact-match', '--tags'],
     {
       reject: false,
-    },
+    }
   )
   if (exitCode) {
     if (
@@ -72,8 +72,10 @@ delete packageJson.prettier
 delete packageJson.jest
 packageJson.version = version
 packageJson.main = 'dist/index.js'
+packageJson.types = 'dist/index.d.js'
 
 await writeJson(join(dist, 'package.json'), packageJson)
 
 await cp(join(root, 'README.md'), join(dist, 'README.md'))
 await cp(join(root, 'LICENSE'), join(dist, 'LICENSE'))
+await cp(join(root, 'src', 'main.d.ts'), join(dist, 'dist/index.d.ts'))
