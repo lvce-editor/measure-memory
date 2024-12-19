@@ -26,14 +26,12 @@ export const measureMemoryInternal = async ({
     return
   }
 
-  const server = await startServer(port, workerPath, root)
+  const [server, ctx] = await Promise.all([
+    startServer(port, workerPath, root),
+    launchBrowser(headless, remoteDebuggingPort, playwrightPath),
+  ])
 
-  const { page, browser } = await launchBrowser(
-    headless,
-    remoteDebuggingPort,
-    playwrightPath
-  )
-
+  const { page, browser } = ctx
   try {
     await page.goto(`http://localhost:${port}`)
     await waitForWorkerReady(page)
