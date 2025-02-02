@@ -1,4 +1,4 @@
-import { Server } from 'node:http'
+import type { Server } from 'node:http'
 import { createApp } from '../CreateApp/CreateApp.ts'
 
 export const startServer = async (
