@@ -22,9 +22,9 @@ Instantiations: 5000`,
 
   const instantiations = await measureTypeScriptMemory({
     folderPath: '.',
-    threshold: 10000,
+    threshold: 10_000,
   })
-  expect(instantiations).toBe(5000)
+  expect(instantiations).toBe(5_000)
 })
 
 test('measureTypeScriptMemory - exceeds threshold', async () => {
