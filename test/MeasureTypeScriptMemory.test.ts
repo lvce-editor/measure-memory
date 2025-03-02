@@ -24,7 +24,7 @@ Instantiations: 5000`,
     folderPath: '.',
     threshold: 10_000,
   })
-  expect(instantiations).toBe(5_000)
+  expect(instantiations).toBe(5000)
 })
 
 test('measureTypeScriptMemory - exceeds threshold', async () => {
