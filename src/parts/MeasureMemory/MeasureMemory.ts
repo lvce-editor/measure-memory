@@ -22,7 +22,6 @@ export const measureMemory = async ({
       threshold: instantiations,
       folderPath: instantiationsPath,
     })
-    return
   }
   await MeasureMemoryInternal.measureMemoryInternal({
     headless: options.headless,
