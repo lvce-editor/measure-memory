@@ -10,9 +10,9 @@ export const measureMemory = async ({
   instantiations,
   instantiationsPath,
 }: {
-  workerPath: string
-  playwrightPath: string
-  threshold: number
+  workerPath?: string
+  playwrightPath?: string
+  threshold?: number
   instantiations?: number
   instantiationsPath?: string
 }) => {
@@ -23,13 +23,15 @@ export const measureMemory = async ({
       folderPath: instantiationsPath,
     })
   }
-  await MeasureMemoryInternal.measureMemoryInternal({
-    headless: options.headless,
-    port: options.port,
-    remoteDebuggingPort: '9222',
-    workerPath,
-    root,
-    playwrightPath,
-    threshold,
-  })
+  if (workerPath && playwrightPath && threshold) {
+    await MeasureMemoryInternal.measureMemoryInternal({
+      headless: options.headless,
+      port: options.port,
+      remoteDebuggingPort: '9222',
+      workerPath,
+      root,
+      playwrightPath,
+      threshold,
+    })
+  }
 }
