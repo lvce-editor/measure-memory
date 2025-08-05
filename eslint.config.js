@@ -15,6 +15,7 @@ export default [
       'unicorn/no-process-exit': 'off',
       'no-console': 'off',
       '@typescript-eslint/prefer-readonly-parameter-types': 'off',
+      'jest/no-restricted-jest-methods': 'off',
     },
   },
 ]
