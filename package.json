@@ -49,14 +49,14 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.27.1",
-    "@lvce-editor/eslint-config": "^1.51.0",
+    "@lvce-editor/eslint-config": "^1.56.0",
     "@rollup/plugin-babel": "^6.0.4",
     "@types/chrome-remote-interface": "^0.31.14",
     "@types/express": "^4.17.21",
-    "eslint": "9.29.0",
-    "jest": "^30.0.3",
-    "rollup": "^4.44.1",
-    "ts-jest": "^29.4.0",
-    "typescript": "^5.8.3"
+    "eslint": "9.32.0",
+    "jest": "^30.0.5",
+    "rollup": "^4.46.2",
+    "ts-jest": "^29.4.1",
+    "typescript": "^5.9.2"
   }
 }
