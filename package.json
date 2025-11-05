@@ -1,6 +1,7 @@
 {
   "name": "@lvce-editor/measure-memory",
   "version": "0.0.0-dev",
+  "license": "MIT",
   "type": "module",
   "main": "src/main.ts",
   "scripts": {
@@ -58,6 +59,5 @@
     "rollup": "^4.52.4",
     "ts-jest": "^29.4.5",
     "typescript": "^5.9.3"
-  },
-  "license": "MIT"
+  }
 }
