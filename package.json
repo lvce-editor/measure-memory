@@ -6,6 +6,7 @@
   "main": "src/main.ts",
   "scripts": {
     "build": "node scripts/build.js",
+    "format": "prettier --write .",
     "lint": "eslint .",
     "measure": "node --experimental-strip-types src/measureMemory.ts",
     "measure:visible": "node --experimental-strip-types src/measureMemory.ts --no-headless",
@@ -56,6 +57,7 @@
     "@types/express": "^4.17.21",
     "eslint": "^9.39.1",
     "jest": "^30.2.0",
+    "prettier": "^3.6.2",
     "rollup": "^4.52.5",
     "ts-jest": "^29.4.5",
     "typescript": "^5.9.3"
