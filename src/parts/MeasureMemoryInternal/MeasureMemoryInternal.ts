@@ -21,6 +21,11 @@ export const measureMemoryInternal = async ({
   playwrightPath: string
   threshold: number
 }) => {
+  if (process.platform === 'win32') {
+    // not supported
+    return
+  }
+
   const [server, ctx] = await Promise.all([
     startServer(port, workerPath, root),
     launchBrowser(headless, remoteDebuggingPort, playwrightPath),
