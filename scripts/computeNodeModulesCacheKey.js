@@ -30,7 +30,8 @@ export const computeHash = (contents) => {
 const computeCacheKey = async (locations) => {
   const absolutePaths = locations.map(getAbsolutePath)
   const contents = await Promise.all(absolutePaths.map(getContent))
-  const hash = computeHash(contents)
+  const extraContents = [process.arch]
+  const hash = computeHash([...contents, ...extraContents])
   return hash
 }
 
