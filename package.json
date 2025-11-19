@@ -1,6 +1,10 @@
 {
   "name": "@lvce-editor/measure-memory",
   "version": "0.0.0-dev",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:lvce-editor/measure-memory.git"
+  },
   "license": "MIT",
   "type": "module",
   "main": "src/main.ts",
