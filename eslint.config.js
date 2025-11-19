@@ -1,7 +1,9 @@
 import * as config from '@lvce-editor/eslint-config'
+import * as actions from '@lvce-editor/eslint-plugin-github-actions'
 
 export default [
   ...config.default,
+  ...actions.default,
   {
     ignores: [
       'packages/text-search-worker/src/textSearchWorkerMain.ts',
@@ -16,6 +18,8 @@ export default [
       'no-console': 'off',
       '@typescript-eslint/prefer-readonly-parameter-types': 'off',
       'jest/no-restricted-jest-methods': 'off',
+      '@typescript-eslint/no-misused-promises': 'off',
+      'github-actions/ci-versions': 'off',
     },
   },
 ]

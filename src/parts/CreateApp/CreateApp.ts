@@ -1,18 +1,26 @@
-import express from 'express'
+import type { IncomingMessage, Server, ServerResponse } from 'node:http'
+import { createReadStream } from 'node:fs'
+import { createServer } from 'node:http'
 import { join } from 'node:path'
+import { pipeline } from 'node:stream/promises'
 
-export const createApp = (aboutWorkerPath: string, root: string) => {
-  const app = express()
+export const createApp = (aboutWorkerPath: string, root: string): Server => {
+  const handleRequest = async (req: IncomingMessage, res: ServerResponse) => {
+    switch (req.url) {
+      case '/':
+        await pipeline(createReadStream(join(root, 'index.html')), res)
+        break
+      case '/dist/aboutWorkerMain.js':
+        await pipeline(createReadStream(aboutWorkerPath), res)
+        break
+      default:
+        res.statusCode = 404
+        res.end('Not Found')
+        break
+    }
+  }
 
-  // Serve worker file
-  app.get('/dist/aboutWorkerMain.js', (req, res) => {
-    res.sendFile(aboutWorkerPath)
-  })
-
-  // Serve index.html from root directory
-  app.get('/', (req, res) => {
-    res.sendFile(join(root, 'index.html'))
-  })
+  const app = createServer(handleRequest)
 
   return app
 }
