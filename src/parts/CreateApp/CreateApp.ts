@@ -1,9 +1,10 @@
-import { createReadStream } from 'node:fs'
-import {
-  createServer,
+import type {
   IncomingMessage,
   Server,
-  ServerResponse,
+  ServerResponse} from 'node:http';
+import { createReadStream } from 'node:fs'
+import {
+  createServer
 } from 'node:http'
 import { join } from 'node:path'
 import { pipeline } from 'node:stream/promises'
