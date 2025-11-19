@@ -1,11 +1,6 @@
-import type {
-  IncomingMessage,
-  Server,
-  ServerResponse} from 'node:http';
+import type { IncomingMessage, Server, ServerResponse } from 'node:http'
 import { createReadStream } from 'node:fs'
-import {
-  createServer
-} from 'node:http'
+import { createServer } from 'node:http'
 import { join } from 'node:path'
 import { pipeline } from 'node:stream/promises'
 
@@ -17,6 +12,7 @@ export const createApp = (aboutWorkerPath: string, root: string): Server => {
         break
       case '/dist/aboutWorkerMain.js':
         await pipeline(createReadStream(aboutWorkerPath), res)
+        break
       default:
         res.statusCode = 404
         res.end('Not Found')

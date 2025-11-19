@@ -16,6 +16,7 @@ export default [
       'no-console': 'off',
       '@typescript-eslint/prefer-readonly-parameter-types': 'off',
       'jest/no-restricted-jest-methods': 'off',
+      '@typescript-eslint/no-misused-promises': 'off',
     },
   },
 ]
