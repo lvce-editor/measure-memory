@@ -1,7 +1,7 @@
 import type { Server } from 'node:http'
 import { createApp } from '../CreateApp/CreateApp.ts'
 
-const listen = async (app: any, port: number): Promise<Server> => {
+const listen = async (app: Server, port: number): Promise<Server> => {
   const { promise, resolve } = Promise.withResolvers<void>()
   const server = app.listen(port, () => {
     resolve()
