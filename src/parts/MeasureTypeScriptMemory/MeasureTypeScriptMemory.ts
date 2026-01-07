@@ -14,7 +14,7 @@ export const measureTypeScriptMemory = async ({
     ['tsc', '--noEmit', '--extendedDiagnostics', '--tsBuildInfoFile', 'null'],
     {
       cwd: folderPath,
-    }
+    },
   )
 
   const instantiations = parseTypeScriptDiagnostics(stdout)

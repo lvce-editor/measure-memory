@@ -7,17 +7,16 @@ const mockExeca = {
 
 jest.unstable_mockModule('execa', () => mockExeca)
 
-const { measureTypeScriptMemory } = await import(
-  '../src/parts/MeasureTypeScriptMemory/MeasureTypeScriptMemory.ts'
-)
+const { measureTypeScriptMemory } =
+  await import('../src/parts/MeasureTypeScriptMemory/MeasureTypeScriptMemory.ts')
 
 test('measureTypeScriptMemory - below threshold', async () => {
   // @ts-ignore
   mockExeca.execa.mockResolvedValue({
+    exitCode: 0,
+    stderr: '',
     stdout: `Files: 574
 Instantiations: 5000`,
-    stderr: '',
-    exitCode: 0,
   })
 
   const instantiations = await measureTypeScriptMemory({
@@ -30,16 +29,16 @@ Instantiations: 5000`,
 test('measureTypeScriptMemory - exceeds threshold', async () => {
   // @ts-ignore
   mockExeca.execa.mockResolvedValue({
+    exitCode: 0,
+    stderr: '',
     stdout: `Files: 574
 Instantiations: 6375`,
-    stderr: '',
-    exitCode: 0,
   })
 
   await expect(
     measureTypeScriptMemory({
       folderPath: '.',
       threshold: 1,
-    })
+    }),
   ).rejects.toThrow(MemoryLimitExceededError)
 })

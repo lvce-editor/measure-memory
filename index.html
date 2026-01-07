@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <title>Memory Test</title>
@@ -21,7 +21,7 @@
           method: 'initialize',
           params: ['message-port', channel.port2],
         },
-        [channel.port2]
+        [channel.port2],
       )
 
       worker.onmessage = (event) => {

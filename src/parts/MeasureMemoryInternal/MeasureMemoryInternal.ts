@@ -5,13 +5,13 @@ import { startServer } from '../Server/Server.ts'
 import { waitForWorkerReady } from '../WaitForWorkerReady/WaitForWorkerReady.ts'
 
 export const measureMemoryInternal = async ({
-  workerPath,
-  port,
   headless,
+  playwrightPath,
+  port,
   remoteDebuggingPort,
   root,
-  playwrightPath,
   threshold,
+  workerPath,
 }: {
   workerPath: string
   port: number
@@ -26,7 +26,7 @@ export const measureMemoryInternal = async ({
     launchBrowser(headless, remoteDebuggingPort, playwrightPath),
   ])
 
-  const { page, browser } = ctx
+  const { browser, page } = ctx
   try {
     await page.goto(`http://localhost:${port}`)
     await waitForWorkerReady(page)
