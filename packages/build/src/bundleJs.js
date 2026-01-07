@@ -41,6 +41,11 @@ export const bundleJs = async () => {
   const input = await rollup(options)
   // @ts-ignore
   await input.write(options.output)
-  await mkdir(join(root, 'packages', 'search-process', 'dist'), { recursive: true })
-  copyFileSync(join(root, '.tmp/dist/dist/index.js'), join(root, 'packages/search-process/dist/index.js'))
+  await mkdir(join(root, 'packages', 'search-process', 'dist'), {
+    recursive: true,
+  })
+  copyFileSync(
+    join(root, '.tmp/dist/dist/index.js'),
+    join(root, 'packages/search-process/dist/index.js'),
+  )
 }

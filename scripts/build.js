@@ -22,7 +22,7 @@ const getGitTagFromGit = async () => {
     ['describe', '--exact-match', '--tags'],
     {
       reject: false,
-    }
+    },
   )
   if (exitCode) {
     if (
