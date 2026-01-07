@@ -4,11 +4,11 @@ import { parseArgs } from '../ParseArgs/ParseArgs.ts'
 import { root } from '../Root/Root.ts'
 
 export const measureMemory = async ({
-  workerPath,
-  playwrightPath,
-  threshold,
   instantiations,
   instantiationsPath,
+  playwrightPath,
+  threshold,
+  workerPath,
 }: {
   workerPath?: string
   playwrightPath?: string
@@ -19,19 +19,19 @@ export const measureMemory = async ({
   const options = parseArgs()
   if (instantiationsPath && instantiations) {
     await MeasureTypeScriptMemory.measureTypeScriptMemory({
-      threshold: instantiations,
       folderPath: instantiationsPath,
+      threshold: instantiations,
     })
   }
   if (workerPath && playwrightPath && threshold) {
     await MeasureMemoryInternal.measureMemoryInternal({
       headless: options.headless,
+      playwrightPath,
       port: options.port,
       remoteDebuggingPort: '9222',
-      workerPath,
       root,
-      playwrightPath,
       threshold,
+      workerPath,
     })
   }
 }

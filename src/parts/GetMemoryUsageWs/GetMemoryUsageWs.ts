@@ -13,8 +13,8 @@ export const getMemoryUsageWs = async (
     client.Target.attachedToTarget(resolve)
     await client.Target.setAutoAttach({
       autoAttach: true,
-      waitForDebuggerOnStart: true,
       flatten: true,
+      waitForDebuggerOnStart: true,
     })
     // @ts-ignore
     const { sessionId } = await promise

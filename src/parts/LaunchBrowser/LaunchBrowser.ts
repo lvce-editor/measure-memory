@@ -5,15 +5,15 @@ export const launchBrowser = async (
 ) => {
   const { chromium } = await import(playwrightPath)
   const browser = await chromium.launch({
-    headless: headless,
     args: [`--remote-debugging-port=${remoteDebuggingPort}`],
+    headless: headless,
   })
 
   const context = await browser.newContext()
   const page = await context.newPage()
 
   return {
-    page,
     browser,
+    page,
   }
 }

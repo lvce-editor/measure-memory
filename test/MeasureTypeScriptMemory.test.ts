@@ -14,10 +14,10 @@ const { measureTypeScriptMemory } = await import(
 test('measureTypeScriptMemory - below threshold', async () => {
   // @ts-ignore
   mockExeca.execa.mockResolvedValue({
+    exitCode: 0,
+    stderr: '',
     stdout: `Files: 574
 Instantiations: 5000`,
-    stderr: '',
-    exitCode: 0,
   })
 
   const instantiations = await measureTypeScriptMemory({
@@ -30,10 +30,10 @@ Instantiations: 5000`,
 test('measureTypeScriptMemory - exceeds threshold', async () => {
   // @ts-ignore
   mockExeca.execa.mockResolvedValue({
+    exitCode: 0,
+    stderr: '',
     stdout: `Files: 574
 Instantiations: 6375`,
-    stderr: '',
-    exitCode: 0,
   })
 
   await expect(
