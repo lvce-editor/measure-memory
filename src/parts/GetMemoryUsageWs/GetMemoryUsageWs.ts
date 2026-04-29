@@ -20,7 +20,7 @@ export const getMemoryUsageWs = async (
     const { sessionId } = await promise
     await client.Runtime.enable(sessionId)
     const mem = await client.Runtime.getHeapUsage(sessionId)
-    return mem as MemoryUsage
+    return mem
   } finally {
     await client.close()
   }
