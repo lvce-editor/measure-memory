@@ -1,20 +1,18 @@
 import { WorkerInitializationError } from '../Errors/Errors.ts'
 import * as WorkerState from '../WorkerState/WorkerState.ts'
 
+const waitForState = async (page: any, value: number, state: number): Promise<number> => {
+  // @ts-ignore
+  await page.waitForFunction((expected: number) => globalThis.__workerDidLaunch === expected, value, {
+    timeout: 5000,
+  })
+  return state
+}
+
 export const waitForWorkerReady = async (page: any): Promise<void> => {
   const workerState = await Promise.race([
-    page
-      // @ts-ignore
-      .waitForFunction(() => globalThis.__workerDidLaunch === 1, {
-        timeout: 5000,
-      })
-      .then(() => WorkerState.Launched),
-    page
-      // @ts-ignore
-      .waitForFunction(() => globalThis.__workerDidLaunch === 2, {
-        timeout: 5000,
-      })
-      .then(() => WorkerState.Error),
+    waitForState(page, 1, WorkerState.Launched),
+    waitForState(page, 2, WorkerState.Error),
   ])
 
   if (workerState === WorkerState.Error) {
