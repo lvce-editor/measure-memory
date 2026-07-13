@@ -54,7 +54,7 @@
     "express": "^5.2.1"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^8.0.1",
+    "@babel/preset-typescript": "^7.29.7",
     "@lerna/legacy-package-management": "^8.2.4",
     "@lvce-editor/eslint-config": "^16.3.0",
     "@rollup/plugin-babel": "^7.1.0",
