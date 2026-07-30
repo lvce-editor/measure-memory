@@ -8,13 +8,10 @@
   "license": "MIT",
   "type": "module",
   "main": "src/main.ts",
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
     "build": "node scripts/build.js",
     "format": "prettier --write .",
-    "lint": "eslint .",
+    "lint": "eslint . && knip --no-config-hints",
     "measure": "node --experimental-strip-types src/measureMemory.ts",
     "measure:visible": "node --experimental-strip-types src/measureMemory.ts --no-headless",
     "test": "node --unhandled-rejections=warn --experimental-vm-modules ./node_modules/jest/bin/jest.js --detectOpenHandles --forceExit",
@@ -53,17 +50,18 @@
   },
   "dependencies": {
     "chrome-remote-interface": "^0.34.0",
-    "execa": "^9.6.1",
-    "express": "^5.2.1"
+    "execa": "^9.6.1"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.29.7",
+    "@jest/globals": "^30.4.1",
     "@lvce-editor/eslint-config": "^17.6.0",
+    "@lvce-editor/eslint-plugin-github-actions": "^17.7.0",
     "@rollup/plugin-babel": "^7.1.0",
     "@types/chrome-remote-interface": "^0.34.0",
-    "@types/express": "^5.0.6",
     "eslint": "^10.8.0",
     "jest": "^30.4.2",
+    "knip": "^6.29.0",
     "prettier": "^3.9.5",
     "rollup": "^4.62.2",
     "ts-jest": "^29.4.11",
