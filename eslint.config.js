@@ -1,9 +1,9 @@
+import { defineConfig } from 'eslint/config'
 import * as config from '@lvce-editor/eslint-config'
-import * as actions from '@lvce-editor/eslint-plugin-github-actions'
 
-export default [
+export default defineConfig([
   ...config.default,
-  ...actions.default,
+  ...config.recommendedActions,
   {
     ignores: [
       'packages/text-search-worker/src/textSearchWorkerMain.ts',
@@ -22,4 +22,4 @@ export default [
       'github-actions/ci-versions': 'off',
     },
   },
-]
+])
